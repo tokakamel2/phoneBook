@@ -15,7 +15,7 @@ public class PhoneBook {
         displayMainMenu(contactService);
     }
     public static void displayMainMenu(ContactService contactService) throws IOException {
-        //contactService.fileSystemContacts();
+        contactService.readFromFile();
         List<String> mainMenu = Arrays.asList(
                 "please choose one of the below: (*Hint: Enter only the number of your choice)",
                 "1. List all contacts",
@@ -48,7 +48,11 @@ public class PhoneBook {
                 displayMainMenu(contactService);
                 break;
             case "3":
-                System.out.println(1);
+                contactService.editContact();
+                System.out.println("Press any button to go to main menu");
+                scanner.nextLine();
+                displayMainMenu(contactService);
+                break;
             case "4":
                 contactService.markAsFavourite();
                 System.out.println("Press any button to go to main menu");
